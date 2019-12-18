@@ -2,13 +2,13 @@ sudo: required
 service:
   - docker
 before_install:
-  - docker build -t palaniec:dockerrepo:latest .
+  - docker build -t palaniec/mongodb:latest .
 script:
-  - echo "$docker_password" | docker lo gin -u "$docker_username" --password-stdin
+  - echo "$docker_password" | docker  login -u "$docker_username" --password-stdin
   - docker images
-  - docker push palaniec:dockerrepo:latest
+  - docker push palaniec/mongodb:latest
 notification:
-  email:
+  email: 
     recipients:
       - kpalani.ec@gmail.com
     on_success: always
